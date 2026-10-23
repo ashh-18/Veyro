@@ -5,6 +5,16 @@
 Veyro is a personal finance tracking web application designed to help users manage their daily budgets, record expenses, and monitor their spending habits through a clean, modern dashboard.
 
 🔗 **Live Demo:** https://ashh-18.github.io/Veyro/
+## 📸 Screenshots
+
+### Dashboard
+
+![Veyro dashboard](screenshots/veyro-dashboard.png)
+
+### Expense Tracking
+
+![Veyro expense form and history](screenshots/veyro-expenses.png)
+
 
 ## ✨ Features
 
