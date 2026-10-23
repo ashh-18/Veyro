@@ -1,0 +1,212 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#171A19">
+  <meta name="description" content="A smarter way to track daily spending and stay within your budget">
+  <title>Veyro | Personal Finance Tracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <div class="app-shell">
+
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Veyro home">
+        <span class="brand-mark" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </span>
+        <span>Veyro<span class="brand-accent"></span></span>
+      </a>
+
+      <div class="topbar-right">
+        <span class="status-dot"></span>
+        <span class="status-label">Know your flow</span>
+        <div class="avatar" aria-label="Personal dashboard">S</div>
+      </div>
+    </header>
+
+    <main>
+      <section class="welcome-section">
+        <div>
+          <p class="eyebrow"><span class="eyebrow-line"></span> YOUR PERSONAL FINANCE SPACE</p>
+          <h1>Spend smarter.<br><span>Stay in control.</span></h1>
+          <p class="welcome-copy">
+            A little awareness today can make a big difference tomorrow.
+          </p>
+        </div>
+        <div class="date-chip">
+          <span class="date-icon" aria-hidden="true">◷</span>
+          <span id="today-label">Your daily overview</span>
+        </div>
+      </section>
+
+      <section class="overview-grid" aria-label="Daily budget overview">
+
+        <article class="panel budget-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">DAILY PLAN</p>
+              <h2>Your budget</h2>
+            </div>
+            <span class="panel-icon lime-icon" aria-hidden="true">↗</span>
+          </div>
+
+          <p class="field-label">Set your daily spending limit</p>
+          <div class="budget-controls">
+            <label class="currency-input">
+              <span>₹</span>
+              <input
+                type="number"
+                id="budget-input"
+                min="1"
+                step="1"
+                placeholder="e.g. 500"
+                aria-label="Daily budget in rupees"
+              >
+            </label>
+            <button type="button" id="set-budget" class="primary-button">
+              Set budget <span aria-hidden="true">↗</span>
+            </button>
+          </div>
+
+          <div class="budget-divider"></div>
+
+          <div class="budget-total-row">
+            <div>
+              <p class="muted-label">Today's spending limit</p>
+              <p id="budget-display" class="large-amount">₹0</p>
+            </div>
+            <span class="mini-tag">DAILY</span>
+          </div>
+        </article>
+
+        <article class="panel spending-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">LIVE OVERVIEW</p>
+              <h2>Spending snapshot</h2>
+            </div>
+            <span class="panel-icon dark-icon" aria-hidden="true">↘</span>
+          </div>
+
+          <div class="snapshot-grid">
+            <div class="snapshot-item">
+              <p class="muted-label">Spent today</p>
+              <p id="spent-display" class="snapshot-amount">₹0</p>
+            </div>
+            <div class="snapshot-item remaining-item">
+              <p class="muted-label">Left to spend</p>
+              <p id="remaining-display" class="snapshot-amount">₹0</p>
+            </div>
+          </div>
+
+          <div class="progress-heading">
+            <span>Budget used</span>
+            <span id="progress-label">0%</span>
+          </div>
+          <div
+            class="progress-track"
+            id="budget-progress"
+            role="progressbar"
+            aria-label="Daily budget used"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-valuenow="0"
+          >
+            <div class="progress-fill" id="progress-fill"></div>
+          </div>
+
+          <p id="budget-message" class="budget-message" aria-live="polite">
+            Set a budget to start your day with a plan.
+          </p>
+        </article>
+      </section>
+
+      <section class="content-grid">
+        <article class="panel expense-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">RECORD A PURCHASE</p>
+              <h2>Add an expense</h2>
+            </div>
+            <span class="panel-icon" aria-hidden="true">＋</span>
+          </div>
+
+          <form id="expense-form">
+            <div class="form-field">
+              <label for="expense-amount">Amount <span class="required">*</span></label>
+              <div class="currency-input expense-currency">
+                <span>₹</span>
+                <input
+                  type="number"
+                  id="expense-amount"
+                  min="0.01"
+                  step="0.01"
+                  placeholder="0.00"
+                  required
+                >
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label for="expense-category">Category</label>
+              <select id="expense-category">
+                <option value="Food">Food</option>
+                <option value="Travel">Travel</option>
+                <option value="Shopping">Shopping</option>
+                <option value="College">College</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
+            <div class="form-field">
+              <label for="expense-note">Note <span class="optional">(optional)</span></label>
+              <input
+                type="text"
+                id="expense-note"
+                maxlength="100"
+                placeholder="What was it for?"
+              >
+            </div>
+
+            <button type="submit" class="primary-button add-button">
+              <span aria-hidden="true">＋</span> Add expense
+            </button>
+          </form>
+          <p class="privacy-note"><span aria-hidden="true">◈</span> Your entries stay in this browser.</p>
+        </article>
+
+        <article class="panel history-panel">
+          <div class="panel-heading history-heading">
+            <div>
+              <p class="eyebrow">WHERE IT GOES</p>
+              <h2>Expense history</h2>
+            </div>
+            <span class="history-caption">Latest first</span>
+          </div>
+
+          <div id="expense-history" class="expense-history">
+            <div class="empty-state">
+              <span class="empty-icon" aria-hidden="true">↗</span>
+              <h3>Your story starts here</h3>
+              <p>Your expenses will show up here once you add one.</p>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <footer class="footer">
+        <span>Veyro <span class="footer-dot">•</span> Spend with intention.</span>
+        <span>Made for mindful money habits.</span>
+      </footer>
+    </main>
+  </div>
+</body>
+</html>
