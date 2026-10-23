@@ -9,7 +9,7 @@ Veyro is a personal finance tracking web application designed to help users mana
 
 ### Dashboard
 
-![Veyro dashboard](screenshots/veyro-dashboard.png)
+![Veyro dashboard](https://github.com/ashh-18/Veyro/blob/main/Screenshot%202026-10-23%20113624.png)
 
 ### Expense Tracking
 
